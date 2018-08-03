@@ -6,9 +6,14 @@ import SimpleCarousel from 'ShopUi/components/molecules/simple-carousel/simple-c
 // this way you can keep the functionality and add your own features
 // if you want to replace the functionality, just extend the base Component instead
 export default class SimpleCarouselExtended extends SimpleCarousel {
-    protected readyCallback(): void {
-        super.readyCallback();
+    slide(): void {
+        console.log(`Showing view number ${this.viewCurrentIndex + 1}/${this.viewsCount}!`);
 
-        alert('extend simple carousel');
+        super.slide();
+
+        // this prevent you from resetting to view 1 if you keep pressing on next arrow
+        if (this.viewCurrentIndex + 1 === this.viewsCount) {
+            this.viewCurrentIndex = this.viewCurrentIndex -1;
+        }
     }
 }
