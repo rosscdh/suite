@@ -32,7 +32,7 @@ class AlexaBotController extends AbstractController
 
         return new JsonResponse(
             [
-                'response' => '', $response, // TODO Product-3: return the response.
+                'response' => $response, // TODO Product-3: return the response.
             ],
             200
         );
