@@ -92,7 +92,7 @@ class AlexaProduct extends AbstractPlugin implements AlexaProductInterface
 
         $abstractProductId = $catalogResponse['suggestionByType']['product_abstract'][0]['id_product_abstract'];
 
-        // TODO Product-2: write the abstract product ID to the file session using the FileSession. You need this in order to use the ID later by the add-to-cart action.
+        // TODO Product-2: write the abstract product ID to the file session using the FileSession (with the name alexa-product.session). You need this in order to use the ID later by the add-to-cart action.
 
         return $abstractProductId;
     }

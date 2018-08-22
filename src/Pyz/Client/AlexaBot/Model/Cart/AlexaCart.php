@@ -129,6 +129,6 @@ class AlexaCart implements AlexaCartInterface
     {
         $quoteSerialised = serialize($quoteTransfer);
 
-        // TODO Cart-3: write the serialized quote transfer to the file session using the FileSession. You need this in order to use the quote transfer later by the checkout-and-order action.
+        // TODO Cart-3: write the serialized quote transfer to the file session using the FileSession (with the name alexa-cart.session). You need this in order to use the quote transfer later by the checkout-and-order action.
     }
 }
