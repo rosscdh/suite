@@ -9,6 +9,7 @@ namespace Pyz\Yves\CartPage;
 
 use SprykerShop\Yves\CartPage\CartPageDependencyProvider as SprykerCartPageDependencyProvider;
 use SprykerShop\Yves\CheckoutWidget\Plugin\CartPage\CheckoutBreadcrumbWidgetPlugin;
+use SprykerShop\Yves\ProductMeasurementUnitWidget\Plugin\CartPage\QuantitySalesUnitWidgetPlugin;
 
 class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
 {
@@ -19,6 +20,7 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     {
         return [
             CheckoutBreadcrumbWidgetPlugin::class,
+            QuantitySalesUnitWidgetPlugin::class,
         ];
     }
 

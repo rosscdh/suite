@@ -23,6 +23,9 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\ExpandBundleItemsWithIma
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductCartPlugin;
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductExistsCartPreCheckPlugin;
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\RemoveInactiveItemsPreReloadPlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitGroupKeyItemExpanderPlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItemExpanderPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentExpanderPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
@@ -45,6 +48,8 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new SkuGroupKeyPlugin(),
             new CartItemWithBundleGroupKeyExpanderPlugin(),
             new CartShipmentExpanderPlugin(),
+            new QuantitySalesUnitItemExpanderPlugin(),
+            new QuantitySalesUnitGroupKeyItemExpanderPlugin(),
         ];
     }
 
@@ -72,6 +77,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     {
         return [
             new CartPostSaveUpdateBundlesPlugin(),
+            new QuantitySalesUnitValuePostSavePlugin(),
         ];
     }
 

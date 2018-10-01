@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6475d1536ec2705e31eb24355539578",
+    "content-hash": "5b5cb0b5410107985dfbb53c5291167d",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -3241,6 +3241,55 @@
             ],
             "description": "ProductDetailPage module",
             "time": "2018-09-27T09:00:11+00:00"
+        },
+        {
+            "name": "spryker-shop/product-measurement-unit-widget",
+            "version": "0.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/product-measurement-unit-widget.git",
+                "reference": "606a3ad3a23c98b6183f4144f9f6d326befa6ce6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/product-measurement-unit-widget/zipball/606a3ad3a23c98b6183f4144f9f6d326befa6ce6",
+                "reference": "606a3ad3a23c98b6183f4144f9f6d326befa6ce6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/kernel": "^3.16.0",
+                "spryker/product-measurement-unit-storage": "^1.1.0",
+                "spryker/product-quantity-storage": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker-shop/cart-page": "*",
+                "spryker-shop/product-detail-page": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/cart-page": "If you want to use QuantitySalesUnitWidgetPlugin: ^0.5.0 || ^0.6.0 || ^0.7.0 || ^0.8.0 ",
+                "spryker-shop/product-detail-page": "if you want to use ProductMeasurementUnitWidgetPlugin: ^0.6.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductMeasurementUnitWidget module",
+            "time": "2018-09-04T09:56:57+00:00"
         },
         {
             "name": "spryker-shop/product-widget",
@@ -8547,6 +8596,160 @@
             "time": "2018-05-31T11:23:24+00:00"
         },
         {
+            "name": "spryker/product-measurement-unit",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-measurement-unit.git",
+                "reference": "a9aaa091c9807bbbe1aa5851fe901c9b26d71874"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-measurement-unit/zipball/a9aaa091c9807bbbe1aa5851fe901c9b26d71874",
+                "reference": "a9aaa091c9807bbbe1aa5851fe901c9b26d71874",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/cart-extension": "^1.2.0 || ^2.0.0",
+                "spryker/event": "^2.0.0",
+                "spryker/glossary": "^3.0.0",
+                "spryker/kernel": "^3.17.0",
+                "spryker/persistent-cart-extension": "^1.0.0",
+                "spryker/product": "^6.0.0",
+                "spryker/propel-orm": "^1.6.0",
+                "spryker/sales": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0",
+                "spryker/sales-extension": "^1.1.0",
+                "spryker/store": "^1.0.0",
+                "spryker/util-measurement-unit-conversion": "^0.1.0 || ^1.0.0"
+            },
+            "require-dev": {
+                "spryker/cart": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/installer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/cart": "If you want to use cart plugins: ^4.0.0",
+                "spryker/installer": "If you want to use ProductMeasurementUnitInstallerPlugin. Minimum required version: ^4.0.0.",
+                "spryker/sales": "If you want to display the measurement unit information in Zed UI: ^8.12.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\ProductMeasurementUnit\\Helper\\": "tests/SprykerTest/Shared/ProductMeasurementUnit/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductMeasurementUnit module",
+            "time": "2018-07-31T09:22:49+00:00"
+        },
+        {
+            "name": "spryker/product-measurement-unit-data-import",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-measurement-unit-data-import.git",
+                "reference": "0233e002f88659fdaff5e6e1b96903d5307bd470"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-measurement-unit-data-import/zipball/0233e002f88659fdaff5e6e1b96903d5307bd470",
+                "reference": "0233e002f88659fdaff5e6e1b96903d5307bd470",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/data-import": "^1.3.0",
+                "spryker/kernel": "^3.20.0",
+                "spryker/product": "^6.0.0",
+                "spryker/product-measurement-unit": "^0.1.1 || ^0.2.0 || ^1.0.0 || ^2.0.0",
+                "spryker/store": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\ProductMeasurementUnitDataImport\\Helper\\": "tests/SprykerTest/Zed/ProductMeasurementUnitDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ProductMeasurementUnitDataImport module",
+            "time": "2018-07-31T16:20:47+00:00"
+        },
+        {
+            "name": "spryker/product-measurement-unit-storage",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-measurement-unit-storage.git",
+                "reference": "47a2cc20b0a813c5142868ef5657fcac717f8c84"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-measurement-unit-storage/zipball/47a2cc20b0a813c5142868ef5657fcac717f8c84",
+                "reference": "47a2cc20b0a813c5142868ef5657fcac717f8c84",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/event-behavior": "^1.1.0",
+                "spryker/kernel": "^3.21.0",
+                "spryker/product-measurement-unit": "^1.0.1 || ^2.0.0",
+                "spryker/storage": "^3.0.0",
+                "spryker/synchronization": "^0.2.0 || ^1.0.0",
+                "spryker/synchronization-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/propel-orm": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/event": "If you want to use Event plugins: ^2.1.0",
+                "spryker/propel-orm": "If you want to use transaction functionality: ^1.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductMeasurementUnitStorage module",
+            "time": "2018-07-31T16:20:47+00:00"
+        },
+        {
             "name": "spryker/product-option",
             "version": "6.3.0",
             "source": {
@@ -8716,6 +8919,104 @@
             ],
             "description": "ProductPageSearchExtension module",
             "time": "2018-09-21T07:35:52+00:00"
+        },
+        {
+            "name": "spryker/product-quantity",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-quantity.git",
+                "reference": "4f2fd9b0e3b54cebb2d472aa6f8926d3cb2bd409"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-quantity/zipball/4f2fd9b0e3b54cebb2d472aa6f8926d3cb2bd409",
+                "reference": "4f2fd9b0e3b54cebb2d472aa6f8926d3cb2bd409",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/cart-extension": "^1.1.0 || ^2.0.0",
+                "spryker/kernel": "^3.17.0",
+                "spryker/product": "^6.0.0"
+            },
+            "require-dev": {
+                "spryker/cart": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/cart": "If you want to use cart pre check plugins: ^4.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\ProductQuantity\\Helper\\": "tests/SprykerTest/Shared/ProductQuantity/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductQuantity module",
+            "time": "2018-07-30T12:46:42+00:00"
+        },
+        {
+            "name": "spryker/product-quantity-storage",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-quantity-storage.git",
+                "reference": "d7e09180f76426244b2f1c0f959b80176331cd63"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-quantity-storage/zipball/d7e09180f76426244b2f1c0f959b80176331cd63",
+                "reference": "d7e09180f76426244b2f1c0f959b80176331cd63",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/event-behavior": "^1.1.0",
+                "spryker/kernel": "^3.21.0",
+                "spryker/product-quantity": "^1.0.1",
+                "spryker/storage": "^3.0.0",
+                "spryker/synchronization": "^0.2.0 || ^1.0.0",
+                "spryker/synchronization-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/propel-orm": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/event": "If you want to use Event plugins: ^2.1.0",
+                "spryker/propel-orm": "If you want to use transaction functionality: ^1.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductQuantityStorage module",
+            "time": "2018-07-18T08:25:49+00:00"
         },
         {
             "name": "spryker/product-search",
@@ -11134,6 +11435,46 @@
             ],
             "description": "UtilEncoding module",
             "time": "2017-10-24T13:32:31+00:00"
+        },
+        {
+            "name": "spryker/util-measurement-unit-conversion",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/util-measurement-unit-conversion.git",
+                "reference": "1ae26cf8e629d25157e273097941bde438a24ddc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/util-measurement-unit-conversion/zipball/1ae26cf8e629d25157e273097941bde438a24ddc",
+                "reference": "1ae26cf8e629d25157e273097941bde438a24ddc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.3.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "UtilMeasurementUnitConversion module",
+            "time": "2018-05-08T12:16:40+00:00"
         },
         {
             "name": "spryker/util-network",

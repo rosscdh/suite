@@ -12,6 +12,10 @@ use Spryker\Zed\DataImport\Communication\Plugin\DataImportPublisherPlugin;
 use Spryker\Zed\DataImport\DataImportDependencyProvider as SprykerDataImportDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\PriceProductDataImport\Communication\Plugin\PriceProductDataImportPlugin;
+use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementBaseUnitDataImportPlugin;
+use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementSalesUnitDataImportPlugin;
+use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementSalesUnitStoreDataImportPlugin;
+use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementUnitDataImportPlugin;
 
 class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
 {
@@ -100,6 +104,11 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     {
         return [
             new PriceProductDataImportPlugin(),
+            new ProductMeasurementUnitDataImportPlugin(),
+            new ProductMeasurementBaseUnitDataImportPlugin(),
+            new ProductMeasurementSalesUnitDataImportPlugin(),
+            new ProductMeasurementSalesUnitStoreDataImportPlugin(),
+
         ];
     }
 

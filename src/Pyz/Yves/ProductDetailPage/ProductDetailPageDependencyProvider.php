@@ -13,6 +13,7 @@ use SprykerShop\Yves\PriceProductVolumeWidget\Plugin\ProductDetailPage\PriceProd
 use SprykerShop\Yves\PriceWidget\Plugin\ProductDetailPage\PriceWidgetPlugin;
 use SprykerShop\Yves\ProductCategoryWidget\Plugin\ProductDetailPage\ProductCategoryWidgetPlugin;
 use SprykerShop\Yves\ProductDetailPage\ProductDetailPageDependencyProvider as SprykerShopProductDetailPageDependencyProvider;
+use SprykerShop\Yves\ProductMeasurementUnitWidget\Plugin\ProductDetailPage\ProductMeasurementUnitWidgetPlugin;
 
 class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDependencyProvider
 {
@@ -29,6 +30,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             AvailabilityWidgetPlugin::class,
             ExampleProductColorGroupWidgetPlugin::class,
             PriceProductVolumeWidgetPlugin::class, #PriceProductVolumeFeature
+            ProductMeasurementUnitWidgetPlugin::class,
         ];
     }
 }
