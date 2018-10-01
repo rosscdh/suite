@@ -8,18 +8,7 @@
 namespace Pyz\Zed\Quote;
 
 use Spryker\Zed\Currency\Communication\Plugin\SetDefaultCurrencyBeforeQuoteCreatePlugin;
-use Spryker\Zed\MultiCart\Communication\Plugin\AddDefaultNameBeforeQuoteSavePlugin;
-use Spryker\Zed\MultiCart\Communication\Plugin\AddSuccessMessageAfterQuoteCreatedPlugin;
-use Spryker\Zed\MultiCart\Communication\Plugin\DeactivateQuotesBeforeQuoteSavePlugin;
-use Spryker\Zed\MultiCart\Communication\Plugin\InitDefaultQuoteCustomerQuoteDeleteAfterPlugin;
-use Spryker\Zed\MultiCart\Communication\Plugin\ResolveQuoteNameBeforeQuoteCreatePlugin;
 use Spryker\Zed\Quote\QuoteDependencyProvider as SprykerQuoteDependencyProvider;
-use Spryker\Zed\SharedCart\Communication\Plugin\CleanQuoteShareBeforeQuoteCreatePlugin;
-use Spryker\Zed\SharedCart\Communication\Plugin\DeactivateSharedQuotesBeforeQuoteSavePlugin;
-use Spryker\Zed\SharedCart\Communication\Plugin\MarkAsDefaultQuoteAfterSavePlugin;
-use Spryker\Zed\SharedCart\Communication\Plugin\RemoveSharedQuoteBeforeQuoteDeletePlugin;
-use Spryker\Zed\SharedCart\Communication\Plugin\SharedQuoteSetDefaultBeforeQuoteSavePlugin;
-use Spryker\Zed\SharedCart\Communication\Plugin\UpdateShareDetailsQuoteAfterSavePlugin;
 
 class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
 {
@@ -28,9 +17,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
      */
     protected function getQuoteCreateAfterPlugins(): array
     {
-        return [
-            new AddSuccessMessageAfterQuoteCreatedPlugin(), #MultiCartFeature
-        ];
+        return [];
     }
 
     /**
@@ -39,13 +26,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     protected function getQuoteCreateBeforePlugins(): array
     {
         return [
-            new SetDefaultCurrencyBeforeQuoteCreatePlugin(),
-            new AddDefaultNameBeforeQuoteSavePlugin(), #MultiCartFeature
-            new ResolveQuoteNameBeforeQuoteCreatePlugin(), #MultiCartFeature
-            new DeactivateQuotesBeforeQuoteSavePlugin(), #MultiCartFeature
-            new CleanQuoteShareBeforeQuoteCreatePlugin(), #SharedCartFeature
-            new DeactivateSharedQuotesBeforeQuoteSavePlugin(), #SharedCartFeature
-        ];
+            new SetDefaultCurrencyBeforeQuoteCreatePlugin(),];
     }
 
     /**
@@ -53,10 +34,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
      */
     protected function getQuoteUpdateAfterPlugins(): array
     {
-        return [
-            new UpdateShareDetailsQuoteAfterSavePlugin(), #SharedCartFeature
-            new MarkAsDefaultQuoteAfterSavePlugin(), #SharedCartFeature
-        ];
+        return [];
     }
 
     /**
@@ -64,13 +42,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
      */
     protected function getQuoteUpdateBeforePlugins(): array
     {
-        return [
-            new AddDefaultNameBeforeQuoteSavePlugin(), #MultiCartFeature
-            new ResolveQuoteNameBeforeQuoteCreatePlugin(), #MultiCartFeature
-            new DeactivateQuotesBeforeQuoteSavePlugin(), #MultiCartFeature
-            new DeactivateSharedQuotesBeforeQuoteSavePlugin(), #SharedCartFeature
-            new SharedQuoteSetDefaultBeforeQuoteSavePlugin(), #SharedCartFeature
-        ];
+        return [];
     }
 
     /**
@@ -78,9 +50,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
      */
     protected function getQuoteDeleteBeforePlugins(): array
     {
-        return [
-            new RemoveSharedQuoteBeforeQuoteDeletePlugin(), #SharedCartFeature
-        ];
+        return [];
     }
 
     /**
@@ -88,8 +58,6 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
      */
     protected function getQuoteDeleteAfterPlugins(): array
     {
-        return [
-            new InitDefaultQuoteCustomerQuoteDeleteAfterPlugin(), #MultiCartFeature
-        ];
+        return [];
     }
 }

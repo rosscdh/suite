@@ -10,7 +10,6 @@ namespace Pyz\Zed\Stock;
 use Spryker\Zed\Availability\Communication\Plugin\AvailabilityHandlerPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Stock\ProductBundleAvailabilityHandlerPlugin;
-use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Stock\LeadProductStockUpdateHandlerPlugin;
 use Spryker\Zed\Stock\StockDependencyProvider as SprykerStockDependencyProvider;
 
 class StockDependencyProvider extends SprykerStockDependencyProvider
@@ -25,7 +24,6 @@ class StockDependencyProvider extends SprykerStockDependencyProvider
         return [
             new AvailabilityHandlerPlugin(),
             new ProductBundleAvailabilityHandlerPlugin(),
-            new LeadProductStockUpdateHandlerPlugin(),
         ];
     }
 }

@@ -7,17 +7,8 @@
 
 namespace Pyz\Zed\ProductManagement;
 
-use Spryker\Zed\CmsBlockProductConnector\Communication\Plugin\CmsBlockProductAbstractBlockListViewPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Money\Communication\Plugin\Form\MoneyFormTypePlugin;
-use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductConcreteEditFormExpanderPlugin;
-use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductConcreteFormEditDataProviderExpanderPlugin;
-use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductConcreteFormEditTabsExpanderPlugin;
-use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductFormTransferMapperExpanderPlugin;
-use Spryker\Zed\ProductDiscontinuedGui\Communication\Plugin\DiscontinuedNotesProductFormTransferMapperExpanderPlugin;
-use Spryker\Zed\ProductDiscontinuedGui\Communication\Plugin\DiscontinuedProductConcreteEditFormExpanderPlugin;
-use Spryker\Zed\ProductDiscontinuedGui\Communication\Plugin\DiscontinueProductConcreteFormEditDataProviderExpanderPlugin;
-use Spryker\Zed\ProductDiscontinuedGui\Communication\Plugin\DiscontinueProductConcreteFormEditTabsExpanderPlugin;
 use Spryker\Zed\ProductManagement\ProductManagementDependencyProvider as SprykerProductManagementDependencyProvider;
 use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugin;
 
@@ -28,9 +19,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
      */
     protected function getProductAbstractViewPlugins()
     {
-        return [
-            new CmsBlockProductAbstractBlockListViewPlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -56,10 +45,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
      */
     protected function getProductConcreteFormEditTabsExpanderPlugins(): array
     {
-        return [
-            new DiscontinueProductConcreteFormEditTabsExpanderPlugin(), #ProductDiscontinuedFeature
-            new ProductConcreteFormEditTabsExpanderPlugin(), #ProductAlternativeFeature
-        ];
+        return [];
     }
 
     /**
@@ -67,10 +53,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
      */
     protected function getProductConcreteEditFormExpanderPlugins(): array
     {
-        return [
-            new DiscontinuedProductConcreteEditFormExpanderPlugin(), #ProductDiscontinuedFeature
-            new ProductConcreteEditFormExpanderPlugin(), #ProductAlternativeFeature
-        ];
+        return [];
     }
 
     /**
@@ -78,10 +61,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
      */
     protected function getProductConcreteFormEditDataProviderExpanderPlugins(): array
     {
-        return [
-            new DiscontinueProductConcreteFormEditDataProviderExpanderPlugin(), #ProductDiscontinuedFeature
-            new ProductConcreteFormEditDataProviderExpanderPlugin(), #ProductAlternativeFeature
-        ];
+        return [];
     }
 
     /**
@@ -89,9 +69,6 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
      */
     protected function getProductFormTransferMapperExpanderPlugins(): array
     {
-        return [
-            new ProductFormTransferMapperExpanderPlugin(), #ProductAlternativeFeature
-            new DiscontinuedNotesProductFormTransferMapperExpanderPlugin(), #ProductDiscontinuedFeature
-        ];
+        return [];
     }
 }

@@ -7,21 +7,7 @@
 
 namespace Pyz\Zed\Discount;
 
-use Spryker\Zed\CustomerGroupDiscountConnector\Communication\Plugin\DecisionRule\CustomerGroupDecisionRulePlugin;
 use Spryker\Zed\Discount\DiscountDependencyProvider as SprykerDiscountDependencyProvider;
-use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionCalculationFormDataExpanderPlugin;
-use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionCalculationFormExpanderPlugin;
-use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionCollectorStrategyPlugin;
-use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionConfigurationExpanderPlugin;
-use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionFilterApplicableItemsPlugin;
-use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionFilterCollectedItemsPlugin;
-use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionPostCreatePlugin;
-use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionPostUpdatePlugin;
-use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionViewBlockProviderPlugin;
-use Spryker\Zed\ProductDiscountConnector\Communication\Plugin\Collector\ProductAttributeCollectorPlugin;
-use Spryker\Zed\ProductDiscountConnector\Communication\Plugin\DecisionRule\ProductAttributeDecisionRulePlugin;
-use Spryker\Zed\ProductLabelDiscountConnector\Communication\Plugin\Collector\ProductLabelCollectorPlugin;
-use Spryker\Zed\ProductLabelDiscountConnector\Communication\Plugin\DecisionRule\ProductLabelDecisionRulePlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\DiscountExtension\NonSplittableDiscountableItemTransformerStrategyPlugin;
 use Spryker\Zed\ShipmentDiscountConnector\Communication\Plugin\DecisionRule\ShipmentCarrierDecisionRulePlugin;
 use Spryker\Zed\ShipmentDiscountConnector\Communication\Plugin\DecisionRule\ShipmentMethodDecisionRulePlugin;
@@ -42,9 +28,6 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
             new ShipmentCarrierDecisionRulePlugin(),
             new ShipmentMethodDecisionRulePlugin(),
             new ShipmentPriceDecisionRulePlugin(),
-            new CustomerGroupDecisionRulePlugin(),
-            new ProductLabelDecisionRulePlugin(),
-            new ProductAttributeDecisionRulePlugin(),
         ]);
     }
 
@@ -54,11 +37,9 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     protected function getCollectorPlugins()
     {
         return array_merge(parent::getCollectorPlugins(), [
-            new ProductLabelCollectorPlugin(),
             new ItemByShipmentCarrierPlugin(),
             new ItemByShipmentMethodPlugin(),
             new ItemByShipmentPricePlugin(),
-            new ProductAttributeCollectorPlugin(),
         ]);
     }
 
@@ -67,9 +48,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
      */
     protected function getDiscountableItemFilterPlugins()
     {
-        return [
-            new DiscountPromotionFilterCollectedItemsPlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -87,9 +66,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
      */
     protected function getCollectorStrategyPlugins()
     {
-        return [
-            new DiscountPromotionCollectorStrategyPlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -97,9 +74,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
      */
     protected function getDiscountPostCreatePlugins()
     {
-        return [
-            new DiscountPromotionPostCreatePlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -107,9 +82,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
      */
     protected function getDiscountPostUpdatePlugins()
     {
-        return [
-            new DiscountPromotionPostUpdatePlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -117,9 +90,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
      */
     protected function getDiscountConfigurationExpanderPlugins()
     {
-        return [
-            new DiscountPromotionConfigurationExpanderPlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -127,9 +98,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
      */
     protected function getDiscountFormExpanderPlugins()
     {
-        return [
-            new DiscountPromotionCalculationFormExpanderPlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -137,9 +106,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
      */
     protected function getDiscountFormDataProviderExpanderPlugins()
     {
-        return [
-            new DiscountPromotionCalculationFormDataExpanderPlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -147,9 +114,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
      */
     protected function getDiscountViewTemplateProviderPlugins()
     {
-        return [
-            new DiscountPromotionViewBlockProviderPlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -157,9 +122,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
      */
     protected function getDiscountApplicableFilterPlugins()
     {
-        return [
-           new DiscountPromotionFilterApplicableItemsPlugin(),
-        ];
+        return [];
     }
 
     /**

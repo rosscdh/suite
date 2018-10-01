@@ -7,7 +7,6 @@
 
 namespace Pyz\Client\Currency;
 
-use Spryker\Client\CartCurrencyConnector\CurrencyChange\CartUpdateCurrencyOnCurrencyChangePlugin;
 use Spryker\Client\Currency\CurrencyDependencyProvider as SprykerCurrencyDependencyProvider;
 
 class CurrencyDependencyProvider extends SprykerCurrencyDependencyProvider
@@ -17,8 +16,6 @@ class CurrencyDependencyProvider extends SprykerCurrencyDependencyProvider
      */
     protected function getCurrencyPostChangePlugins(): array
     {
-        return [
-            new CartUpdateCurrencyOnCurrencyChangePlugin(),
-        ];
+        return [];
     }
 }

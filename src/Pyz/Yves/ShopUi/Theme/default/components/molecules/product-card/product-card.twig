@@ -28,10 +28,6 @@
 {% endblock %}
 
 {% block content %}
-    {% block labels %}
-        {{ widget('ProductAbstractLabelWidgetPlugin', data.abstractId) }}
-    {% endblock %}
-
     {% block groups %}
         {{ widget('ProductGroupWidgetPlugin', data.abstractId) }}
     {% endblock %}

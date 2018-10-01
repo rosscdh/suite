@@ -8,11 +8,6 @@
 namespace Pyz\Zed\PriceProduct;
 
 use Spryker\Zed\PriceProduct\PriceProductDependencyProvider as SprykerPriceProductDependencyProvider;
-use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceDimensionAbstractWriterPlugin;
-use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceDimensionConcreteWriterPlugin;
-use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceProductDimensionExpanderStrategyPlugin;
-use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceProductStorePreDeletePlugin;
-use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceQueryCriteriaPlugin;
 use Spryker\Zed\PriceProductVolume\Communication\Plugin\PriceProductExtension\PriceProductVolumeExtractorPlugin;
 
 /**
@@ -29,7 +24,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     protected function getPriceDimensionQueryCriteriaPlugins(): array
     {
         return array_merge(parent::getPriceDimensionQueryCriteriaPlugins(), [
-            new MerchantRelationshipPriceQueryCriteriaPlugin(),
+
         ]);
     }
 
@@ -40,9 +35,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
      */
     protected function getPriceDimensionAbstractSaverPlugins(): array
     {
-        return [
-            new MerchantRelationshipPriceDimensionAbstractWriterPlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -52,9 +45,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
      */
     protected function getPriceProductStorePreDeletePlugins(): array
     {
-        return [
-            new MerchantRelationshipPriceProductStorePreDeletePlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -64,9 +55,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
      */
     protected function getPriceDimensionConcreteSaverPlugins(): array
     {
-        return [
-            new MerchantRelationshipPriceDimensionConcreteWriterPlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -74,9 +63,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
      */
     protected function getPriceProductDimensionExpanderStrategyPlugins(): array
     {
-        return [
-            new MerchantRelationshipPriceProductDimensionExpanderStrategyPlugin(),
-        ];
+        return [];
     }
 
     /**

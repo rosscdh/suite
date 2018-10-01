@@ -29,8 +29,6 @@ use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RemoveCanceledAmount
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RemoveTotalsCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\SubtotalCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\TaxTotalCalculatorPlugin;
-use Spryker\Zed\DiscountCalculationConnector\Communication\Plugin\DiscountCalculatorPlugin;
-use Spryker\Zed\DiscountPromotion\Communication\Plugin\Calculation\RemovePromotionItemsCalculatorPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Payment\Communication\Plugin\Calculation\PaymentCalculatorPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Calculation\CalculateBundlePricePlugin;
@@ -183,7 +181,6 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
         $pluginStack = [
             new RemoveTotalsCalculatorPlugin(),
             new RemoveAllCalculatedDiscountsCalculatorPlugin(),
-            new RemovePromotionItemsCalculatorPlugin(),
             new RemoveCanceledAmountCalculatorPlugin(),
 
             new PriceCalculatorPlugin(),
@@ -197,7 +194,6 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new ShipmentTaxRateCalculatorPlugin(),
 
             new InitialGrandTotalCalculatorPlugin(),
-            new DiscountCalculatorPlugin(),
             new DiscountAmountAggregatorForGenericAmountPlugin(),
             new ItemDiscountAmountFullAggregatorPlugin(),
 

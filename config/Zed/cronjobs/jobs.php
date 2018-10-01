@@ -12,32 +12,32 @@ $stores = require(APPLICATION_ROOT_DIR . '/config/Shared/stores.php');
 $allStores = array_keys($stores);
 
 /* -- MAIL QUEUE -- */
-$jobs[] = [
-    'name' => 'send-mails',
-    'command' => '$PHP_BIN vendor/bin/console mailqueue:registration:send',
-    'schedule' => '*/10 * * * *',
-    'enable' => false,
-    'run_on_non_production' => true,
-    'stores' => $allStores,
-];
-
-/* ProductLabel */
-$jobs[] = [
-    'name' => 'check-product-label-validity',
-    'command' => '$PHP_BIN vendor/bin/console product-label:validity',
-    'schedule' => '0 6 * * *',
-    'enable' => true,
-    'run_on_non_production' => true,
-    'stores' => $allStores,
-];
-$jobs[] = [
-    'name' => 'update-product-label-relations',
-    'command' => '$PHP_BIN vendor/bin/console product-label:relations:update -vvv',
-    'schedule' => '* * * * *',
-    'enable' => true,
-    'run_on_non_production' => true,
-    'stores' => $allStores,
-];
+//$jobs[] = [
+//    'name' => 'send-mails',
+//    'command' => '$PHP_BIN vendor/bin/console mailqueue:registration:send',
+//    'schedule' => '*/10 * * * *',
+//    'enable' => false,
+//    'run_on_non_production' => true,
+//    'stores' => $allStores,
+//];
+//
+///* ProductLabel */
+//$jobs[] = [
+//    'name' => 'check-product-label-validity',
+//    'command' => '$PHP_BIN vendor/bin/console product-label:validity',
+//    'schedule' => '0 6 * * *',
+//    'enable' => true,
+//    'run_on_non_production' => true,
+//    'stores' => $allStores,
+//];
+//$jobs[] = [
+//    'name' => 'update-product-label-relations',
+//    'command' => '$PHP_BIN vendor/bin/console product-label:relations:update -vvv',
+//    'schedule' => '* * * * *',
+//    'enable' => true,
+//    'run_on_non_production' => true,
+//    'stores' => $allStores,
+//];
 
 /* Oms */
 $jobs[] = [
@@ -94,14 +94,15 @@ $jobs[] = [
 'stores' => $allStores,
 ];
 
-$jobs[] = [
-    'name' => 'deactivate-discontinued-products',
-    'command' => '$PHP_BIN vendor/bin/console deactivate-discontinued-products',
-    'schedule' => '0 0 * * *',
-    'enable' => true,
-    'run_on_non_production' => true,
-    'stores' => $allStores,
-];
+//
+//$jobs[] = [
+//    'name' => 'deactivate-discontinued-products',
+//    'command' => '$PHP_BIN vendor/bin/console deactivate-discontinued-products',
+//    'schedule' => '0 0 * * *',
+//    'enable' => true,
+//    'run_on_non_production' => true,
+//    'stores' => $allStores,
+//];
 
 /* StateMachine */
 /*

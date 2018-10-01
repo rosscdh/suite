@@ -10,8 +10,6 @@ namespace Pyz\Zed\Category;
 use Spryker\Zed\Category\CategoryDependencyProvider as SprykerDependencyProvider;
 use Spryker\Zed\Category\Communication\Plugin\CategoryUrlPathPrefixUpdaterPlugin;
 use Spryker\Zed\CategoryNavigationConnector\Communication\Plugin\UpdateNavigationRelationPlugin;
-use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\CategoryFormPlugin;
-use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\ReadCmsBlockCategoryRelationsPlugin;
 use Spryker\Zed\ProductCategory\Communication\Plugin\ReadProductCategoryRelationPlugin;
 use Spryker\Zed\ProductCategory\Communication\Plugin\RemoveProductCategoryRelationPlugin;
 use Spryker\Zed\ProductCategory\Communication\Plugin\UpdateProductCategoryRelationPlugin;
@@ -23,14 +21,9 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
      */
     protected function getRelationDeletePluginStack()
     {
-        $deletePlugins = array_merge(
-            [
-                new RemoveProductCategoryRelationPlugin(),
-            ],
-            parent::getRelationDeletePluginStack()
-        );
-
-        return $deletePlugins;
+        return [
+            new RemoveProductCategoryRelationPlugin(),
+        ];
     }
 
     /**
@@ -38,14 +31,10 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
      */
     protected function getRelationUpdatePluginStack()
     {
-        return array_merge(
-            [
-                new UpdateProductCategoryRelationPlugin(),
-                new CategoryFormPlugin(),
-                new UpdateNavigationRelationPlugin(),
-            ],
-            parent::getRelationUpdatePluginStack()
-        );
+        return [
+            new UpdateProductCategoryRelationPlugin(),
+            new UpdateNavigationRelationPlugin(),
+        ];
     }
 
     /**
@@ -53,15 +42,9 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
      */
     protected function getRelationReadPluginStack()
     {
-        $readPlugins = array_merge(
-            [
-                new ReadProductCategoryRelationPlugin(),
-                new ReadCmsBlockCategoryRelationsPlugin(),
-            ],
-            parent::getRelationReadPluginStack()
-        );
-
-        return $readPlugins;
+        return [
+            new ReadProductCategoryRelationPlugin(),
+        ];
     }
 
     /**
@@ -69,9 +52,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
      */
     protected function getCategoryFormPlugins()
     {
-        return array_merge(parent::getCategoryFormPlugins(), [
-            new CategoryFormPlugin(),
-        ]);
+        return [];
     }
 
     /**

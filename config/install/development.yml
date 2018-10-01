@@ -213,13 +213,6 @@ sections:
                 - US
                 - DE
 
-        update-product-labels:
-            command: "vendor/bin/console product-label:relations:update"
-            stores:
-                - US
-                - DE
-
-
     jenkins-up:
         jenkins-generate:
             command: "vendor/bin/console setup:jenkins:generate"

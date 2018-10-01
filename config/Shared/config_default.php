@@ -2,12 +2,7 @@
 
 use Monolog\Logger;
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
-use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
-use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
-use Spryker\Shared\Auth\AuthConstants;
-use Spryker\Shared\Cms\CmsConstants;
-use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DummyPayment\DummyPaymentConfig;
@@ -15,20 +10,11 @@ use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebHtmlErrorRenderer;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\EventBehavior\EventBehaviorConstants;
-use Spryker\Shared\EventJournal\EventJournalConstants;
-use Spryker\Shared\FileManager\FileManagerConstants;
-use Spryker\Shared\FileManagerGui\FileManagerGuiConstants;
-use Spryker\Shared\FileSystem\FileSystemConstants;
-use Spryker\Shared\Flysystem\FlysystemConstants;
-use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Kernel\ClassResolver\Cache\Provider\File;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Monitoring\MonitoringConstants;
-use Spryker\Shared\NewRelic\NewRelicConstants;
-use Spryker\Shared\Oauth\OauthConstants;
-use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
@@ -88,96 +74,7 @@ $config[UserConstants::USER_SYSTEM_USERS] = [
 ];
 // For a better performance you can turn off Zed authentication
 $AUTH_ZED_ENABLED = false;
-$config[AuthConstants::AUTH_ZED_ENABLED] = $AUTH_ZED_ENABLED;
 $config[ZedRequestConstants::AUTH_ZED_ENABLED] = $AUTH_ZED_ENABLED;
-$config[AuthConstants::AUTH_DEFAULT_CREDENTIALS] = [
-    'yves_system' => [
-        'rules' => [
-            [
-                'bundle' => '*',
-                'controller' => 'gateway',
-                'action' => '*',
-            ],
-        ],
-        // Please replace this token for your project
-        'token' => 'JDJ5JDEwJFE0cXBwYnVVTTV6YVZXSnVmM2l1UWVhRE94WkQ4UjBUeHBEWTNHZlFRTEd4U2F6QVBqejQ2',
-    ],
-];
-
-// ---------- ACL
-// ACL: Allow or disallow of urls for Zed Admin GUI for ALL users
-$config[AclConstants::ACL_DEFAULT_RULES] = [
-    [
-        'bundle' => 'auth',
-        'controller' => 'login',
-        'action' => 'index',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'auth',
-        'controller' => 'login',
-        'action' => 'check',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'auth',
-        'controller' => 'password',
-        'action' => 'reset',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'auth',
-        'controller' => 'password',
-        'action' => 'reset-request',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'acl',
-        'controller' => 'index',
-        'action' => 'denied',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'heartbeat',
-        'controller' => 'index',
-        'action' => 'index',
-        'type' => 'allow',
-    ],
-];
-// ACL: Allow or disallow of urls for Zed Admin GUI
-$config[AclConstants::ACL_USER_RULE_WHITELIST] = [
-    [
-        'bundle' => 'application',
-        'controller' => '*',
-        'action' => '*',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'auth',
-        'controller' => '*',
-        'action' => '*',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'heartbeat',
-        'controller' => 'heartbeat',
-        'action' => 'index',
-        'type' => 'allow',
-    ],
-];
-// ACL: Special rules for specific users
-$config[AclConstants::ACL_DEFAULT_CREDENTIALS] = [
-    'yves_system' => [
-        'rules' => [
-            [
-                'bundle' => '*',
-                'controller' => 'gateway',
-                'action' => '*',
-                'type' => 'allow',
-            ],
-        ],
-    ],
-];
 
 // ---------- Elasticsearch
 $ELASTICA_HOST = 'localhost';
@@ -294,7 +191,6 @@ $config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
 // ---------- Theme
 $YVES_THEME = 'default';
 $config[TwigConstants::YVES_THEME] = $YVES_THEME;
-$config[CmsConstants::YVES_THEME] = $YVES_THEME;
 
 // ---------- Error handling
 $config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';
@@ -328,10 +224,6 @@ $config[LogConstants::LOG_SANITIZE_FIELDS] = [
 $config[LogConstants::LOG_QUEUE_NAME] = 'log-queue';
 $config[LogConstants::LOG_ERROR_QUEUE_NAME] = 'error-log-queue';
 
-/**
- * As long EventJournal is in ZedRequest bundle this needs to be disabled by hand
- */
-$config[EventJournalConstants::DISABLE_EVENT_JOURNAL] = true;
 
 // ---------- Auto-loader
 $config[KernelConstants::AUTO_LOADER_CACHE_FILE_NO_LOCK] = false;
@@ -365,9 +257,6 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
     DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
 ];
-
-// ---------- NewRelic
-$config[NewRelicConstants::NEWRELIC_API_KEY] = null;
 
 // ---------- Queue
 $config[QueueConstants::QUEUE_SERVER_ID] = (gethostname()) ?: php_uname('n');
@@ -412,45 +301,24 @@ $config[CustomerConstants::CUSTOMER_ANONYMOUS_PATTERN] = '^/.*';
 // ---------- Taxes
 $config[TaxConstants::DEFAULT_TAX_RATE] = 19;
 
-$config[FileSystemConstants::FILESYSTEM_SERVICE] = [];
-$config[FlysystemConstants::FILESYSTEM_SERVICE] = $config[FileSystemConstants::FILESYSTEM_SERVICE];
-$config[CmsGuiConstants::CMS_PAGE_PREVIEW_URI] = '/en/cms/preview/%d';
-
 // ---------- Loggly
 $config[LogglyConstants::TOKEN] = 'loggly-token:sample:123456';
-
-// ---------- CMS
-$config[CmsGuiConstants::CMS_FOLDER_PATH] = '@Cms/templates/';
-
-// ----------- Glue Application
-$config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = '';
-$config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = false;
-
-// ----------- OAUTH
-//Check how to generate https://oauth2.thephpleague.com/installation/
-$config[OauthConstants::PRIVATE_KEY_PATH] = 'file://';
-$config[OauthConstants::PUBLIC_KEY_PATH] = 'file://';
-$config[OauthConstants::ENCRYPTION_KEY] = '';
-
-// ----------- AuthRestApi
-$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = '';
-$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = '';
-
-// ---------- FileSystem
-$config[FileSystemConstants::FILESYSTEM_SERVICE] = [
-    'files' => [
-        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
-        'root' => APPLICATION_ROOT_DIR . '/data/DE/media/',
-        'path' => 'files/',
-    ],
-];
-
-// ---------- FileManager
-$config[FileManagerConstants::STORAGE_NAME] = 'files';
-$config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';
 
 // ---------- Monitoring
 $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
     '_profiler',
     '_wdt',
+];
+$config[ZedRequestConstants::AUTH_DEFAULT_CREDENTIALS] = [
+    'yves_system' => [
+        'rules' => [
+            [
+                'bundle' => '*',
+                'controller' => 'gateway',
+                'action' => '*',
+            ],
+        ],
+        // Please replace this token for your project
+        'token' => 'JDJ5JDEwJFE0cXBwYnVVTTV6YVZXSnVmM2l1UWVhRE94WkQ4UjBUeHBEWTNHZlFRTEd4U2F6QVBqejQ2',
+    ],
 ];

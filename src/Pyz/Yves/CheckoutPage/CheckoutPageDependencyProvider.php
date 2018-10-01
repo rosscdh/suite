@@ -9,8 +9,6 @@ namespace Pyz\Yves\CheckoutPage;
 
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
-use SprykerShop\Yves\CartNoteWidget\Plugin\CheckoutPage\CartNoteQuoteItemNoteWidgetPlugin;
-use SprykerShop\Yves\CartNoteWidget\Plugin\CheckoutPage\CartNoteQuoteNoteWidgetPlugin;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm;
@@ -18,8 +16,6 @@ use SprykerShop\Yves\CustomerPage\Form\DataProvider\CheckoutAddressFormDataProvi
 use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
-use SprykerShop\Yves\DiscountWidget\Plugin\CheckoutPage\CheckoutVoucherFormWidgetPlugin;
-use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\CheckoutPage\SummaryProductPackagingUnitWidgetPlugin;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
@@ -28,12 +24,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      */
     protected function getSummaryPageWidgetPlugins(): array
     {
-        return [
-            CheckoutVoucherFormWidgetPlugin::class,
-            CartNoteQuoteItemNoteWidgetPlugin::class, #CartNoteFeature
-            CartNoteQuoteNoteWidgetPlugin::class, #CartNoteFeature
-            SummaryProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnit
-        ];
+        return [];
     }
 
     /**

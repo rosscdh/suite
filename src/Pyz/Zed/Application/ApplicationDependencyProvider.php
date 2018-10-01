@@ -15,9 +15,6 @@ use Spryker\Service\UtilDateTime\ServiceProvider\DateTimeFormatterServiceProvide
 use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
 use Spryker\Shared\Config\Environment;
 use Spryker\Shared\ErrorHandler\Plugin\ServiceProvider\WhoopsErrorHandlerServiceProvider;
-use Spryker\Zed\Acl\Communication\Plugin\Bootstrap\AclBootstrapProvider;
-use Spryker\Zed\Api\Communication\Plugin\ApiServiceProviderPlugin;
-use Spryker\Zed\Api\Communication\Plugin\ServiceProvider\ApiRoutingServiceProvider;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\AssertUrlConfigurationServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\EnvironmentInformationServiceProvider;
@@ -29,10 +26,6 @@ use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SslServiceProvi
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SubRequestServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\TranslationServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\ZedHstsServiceProvider;
-use Spryker\Zed\Assertion\Communication\Plugin\ServiceProvider\AssertionServiceProvider;
-use Spryker\Zed\Auth\Communication\Plugin\Bootstrap\AuthBootstrapProvider;
-use Spryker\Zed\Auth\Communication\Plugin\ServiceProvider\RedirectAfterLoginProvider;
-use Spryker\Zed\Chart\Communication\Plugin\ServiceProvider\TwigChartFunctionServiceProvider;
 use Spryker\Zed\Currency\Communication\Plugin\ServiceProvider\TwigCurrencyServiceProvider;
 use Spryker\Zed\EventBehavior\Communication\Plugin\ServiceProvider\EventBehaviorServiceProvider;
 use Spryker\Zed\Gui\Communication\Plugin\ServiceProvider\GuiTwigExtensionServiceProvider;
@@ -44,7 +37,6 @@ use Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvide
 use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Zed\Twig\Communication\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
 use Spryker\Zed\User\Communication\Plugin\ServiceProvider\UserServiceProvider;
-use Spryker\Zed\WebProfiler\Communication\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Spryker\Zed\ZedNavigation\Communication\Plugin\ServiceProvider\ZedNavigationServiceProvider;
 use Spryker\Zed\ZedRequest\Communication\Plugin\GatewayServiceProviderPlugin;
 
@@ -63,17 +55,13 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SessionServiceProvider(),
             new SprykerSessionServiceProvider(),
             new SslServiceProvider(),
-            new AuthBootstrapProvider(),
-            new AclBootstrapProvider(),
             new TwigServiceProvider(),
             new SprykerTwigServiceProvider(),
             new EnvironmentInformationServiceProvider(),
             new GatewayServiceProviderPlugin(),
-            new AssertionServiceProvider(),
             new UserServiceProvider(),
             new TwigMoneyServiceProvider(),
             new SubRequestServiceProvider(),
-            new WebProfilerServiceProvider(),
             new ZedHstsServiceProvider(),
             new FormFactoryServiceProvider(),
             new TwigCurrencyServiceProvider(),
@@ -83,11 +71,9 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new TranslationServiceProvider(),
             new DateTimeFormatterServiceProvider(),
             new GuiTwigExtensionServiceProvider(),
-            new RedirectAfterLoginProvider(),
             new PropelServiceProvider(),
             new GuiTwigExtensionServiceProvider(),
             new EventBehaviorServiceProvider(),
-            new TwigChartFunctionServiceProvider(),
         ];
 
         if (Environment::isDevelopment()) {
@@ -112,8 +98,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SslServiceProvider(),
             new ServiceControllerServiceProvider(),
             new RoutingServiceProvider(),
-            new ApiServiceProviderPlugin(),
-            new ApiRoutingServiceProvider(),
             new PropelServiceProvider(),
             new EventBehaviorServiceProvider(),
         ];
@@ -163,8 +147,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SessionServiceProvider(),
             new SprykerSessionServiceProvider(),
             new SslServiceProvider(),
-            new AuthBootstrapProvider(),
-            new AclBootstrapProvider(),
             new ServiceControllerServiceProvider(),
             new RoutingServiceProvider(),
             new MvcRoutingServiceProvider(),

@@ -49,8 +49,6 @@ use Pyz\Zed\DataImport\Business\Model\ProductManagementAttribute\ProductManageme
 use Pyz\Zed\DataImport\Business\Model\ProductManagementAttribute\ProductManagementLocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductOption\ProductOptionWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductOptionPrice\ProductOptionPriceWriterStep;
-use Pyz\Zed\DataImport\Business\Model\ProductRelation\Hook\ProductRelationAfterImportHook;
-use Pyz\Zed\DataImport\Business\Model\ProductRelation\ProductRelationWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductReview\ProductReviewWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductSearchAttribute\Hook\ProductSearchAfterImportHook;
 use Pyz\Zed\DataImport\Business\Model\ProductSearchAttribute\ProductSearchAttributeWriter;
@@ -69,7 +67,9 @@ use Pyz\Zed\DataImport\Business\Model\Tax\TaxWriterStep;
 use Pyz\Zed\DataImport\DataImportDependencyProvider;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
+use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
 use Spryker\Zed\DataImport\Business\DataImportBusinessFactory as SprykerDataImportBusinessFactory;
+use Spryker\Zed\DataImport\Dependency\Plugin\DataImportPluginInterface;
 use Spryker\Zed\Discount\DiscountConfig;
 
 /**
@@ -89,39 +89,25 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataImporterCollection
             ->addDataImporter($this->createStoreImporter())
             ->addDataImporter($this->createCurrencyImporter())
-            ->addDataImporter($this->createOrderSourceImporter())
             ->addDataImporter($this->createCategoryTemplateImporter())
             ->addDataImporter($this->createCustomerImporter())
             ->addDataImporter($this->createGlossaryImporter())
             ->addDataImporter($this->createTaxImporter())
             ->addDataImporter($this->createShipmentImporter())
             ->addDataImporter($this->createShipmentPriceImporter())
-            ->addDataImporter($this->createDiscountImporter())
-            ->addDataImporter($this->createDiscountStoreImporter())
-            ->addDataImporter($this->createDiscountVoucherImporter())
             ->addDataImporter($this->createStockImporter())
             ->addDataImporter($this->createProductAttributeKeyImporter())
             ->addDataImporter($this->createProductManagementAttributeImporter())
+            ->addDataImporter($this->createCategoryImporter())
             ->addDataImporter($this->createProductAbstractImporter())
             ->addDataImporter($this->createProductAbstractStoreImporter())
             ->addDataImporter($this->createProductConcreteImporter())
-            ->addDataImporter($this->createProductImageImporter())
             ->addDataImporter($this->createProductStockImporter())
             ->addDataImporter($this->createProductOptionImporter())
             ->addDataImporter($this->createProductOptionPriceImporter())
             ->addDataImporter($this->createProductGroupImporter())
-            ->addDataImporter($this->createProductRelationImporter())
-            ->addDataImporter($this->createProductReviewImporter())
-            ->addDataImporter($this->createProductLabelImporter())
-            ->addDataImporter($this->createProductSetImporter())
             ->addDataImporter($this->createProductSearchAttributeMapImporter())
             ->addDataImporter($this->createProductSearchAttributeImporter())
-            ->addDataImporter($this->createCmsTemplateImporter())
-            ->addDataImporter($this->createCmsPageImporter())
-            ->addDataImporter($this->createCmsBlockImporter())
-            ->addDataImporter($this->createCmsBlockStoreImporter())
-            ->addDataImporter($this->createCmsBlockCategoryPositionImporter())
-            ->addDataImporter($this->createCmsBlockCategoryImporter())
             ->addDataImporter($this->createNavigationImporter())
             ->addDataImporter($this->createNavigationNodeImporter())
             ->addDataImporter($this->createDiscountAmountImporter());
@@ -129,6 +115,14 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataImporterCollection->addDataImporterPlugins($this->getDataImporterPlugins());
 
         return $dataImporterCollection;
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportPluginInterface
+     */
+    protected function createCategoryImporter(): DataImportPluginInterface
+    {
+        return new CategoryDataImportPlugin();
     }
 
     /**
@@ -818,23 +812,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
-     */
-    protected function createProductRelationImporter()
-    {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductRelationDataImporterConfiguration());
-
-        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
-        $dataSetStepBroker
-            ->addStep($this->createAddProductAbstractSkusStep())
-            ->addStep(new ProductRelationWriter());
-
-        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
-        $dataImporter->addAfterImportHook($this->createProductRelationAfterImportHook());
-
-        return $dataImporter;
-    }
 
     /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
@@ -884,16 +861,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductRelation\Hook\ProductRelationAfterImportHook
-     */
-    protected function createProductRelationAfterImportHook()
-    {
-        return new ProductRelationAfterImportHook(
-            $this->getProductRelationFacade()
-        );
-    }
-
-    /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
     protected function createProductSetImporter()
@@ -928,14 +895,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createProductSetImageExtractorStep()
     {
         return new ProductSetImageExtractorStep();
-    }
-
-    /**
-     * @return \Spryker\Zed\ProductRelation\Business\ProductRelationFacadeInterface
-     */
-    protected function getProductRelationFacade()
-    {
-        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_PRODUCT_RELATION);
     }
 
     /**

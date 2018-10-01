@@ -1,0 +1,9 @@
+{% extends template('page-layout-main') %}
+
+{% block pageInfo %}{% endblock %}
+
+{% block content %}
+    {% include molecule('jumbotron') with {
+        class: 'box'
+    } only %}
+{% endblock %}
