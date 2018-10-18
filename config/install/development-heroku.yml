@@ -168,6 +168,7 @@ sections:
             - DE
             groups:
             - propel
+            timeout: 600
 
         maintenance-page-disable:
             command: "vendor/bin/console maintenance:disable"
@@ -194,6 +195,7 @@ sections:
             stores:
             - US
             - DE
+            timeout: 1200
 
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update"
@@ -215,28 +217,35 @@ sections:
             command: "vendor/bin/console frontend:project:install-dependencies -vvv"
             groups:
             - project
+            timeout: 1200
 
         yves-install-dependencies:
             command: "vendor/bin/console frontend:yves:install-dependencies -vvv"
             groups:
             - yves
+            timeout: 1200
 
         yves-build-frontend:
             command: "vendor/bin/console frontend:yves:build -vvv"
             groups:
             - yves
+            timeout: 1200
+
     zed-frontend:
         dependencies-install:
             command: "vendor/bin/console frontend:project:install-dependencies -vvv"
             groups:
             - project
+            timeout: 1200
 
         zed-install-dependencies:
             command: "vendor/bin/console frontend:zed:install-dependencies -vvv"
             groups:
             - zed
+            timeout: 1200
 
         zed-build-frontend:
             command: "vendor/bin/console frontend:zed:build"
             groups:
             - zed
+            timeout: 1200
