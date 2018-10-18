@@ -2,6 +2,7 @@
 
 namespace Pyz\Zed\Propel\Business;
 
+use Pyz\Zed\Propel\Communication\Console\DiffConsole;
 use Pyz\Zed\Propel\Communication\Console\MigrateConsole;
 use Spryker\Zed\Propel\Business\PropelBusinessFactory as SprykerPropelBusinessFactory;
 
@@ -13,5 +14,13 @@ class PropelBusinessFactory extends SprykerPropelBusinessFactory
     protected function createMigrateConsole()
     {
         return new MigrateConsole();
+    }
+
+    /**
+     * @return \Pyz\Zed\Propel\Communication\Console\DiffConsole|\Spryker\Zed\Propel\Communication\Console\DiffConsole
+     */
+    protected function createDiffConsole()
+    {
+        return new DiffConsole();
     }
 }
