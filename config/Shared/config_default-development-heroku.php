@@ -46,10 +46,10 @@ $config[StorageConstants::STORAGE_REDIS_PASSWORD] = $ENV_REDIS_CONNECTION_DATA['
 $ENV_RABBITMQ_CONNECTION_DATA = parse_url(getenv(getenv('AMQP_URL_NAME') ?: 'AMQP_URL_NAME'));
 
 // ---------- RabbitMQ
-$config[RabbitMqEnv::RABBITMQ_API_HOST] = $ENV_DB_CONNECTION_DATA['host'];
-$config[RabbitMqEnv::RABBITMQ_API_PORT] = $ENV_DB_CONNECTION_DATA['port'] ?? 80;
-$config[RabbitMqEnv::RABBITMQ_API_USERNAME] = $ENV_DB_CONNECTION_DATA['user'];
-$config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = $ENV_DB_CONNECTION_DATA['pass'];
+$config[RabbitMqEnv::RABBITMQ_API_HOST] = $ENV_RABBITMQ_CONNECTION_DATA['host'];
+$config[RabbitMqEnv::RABBITMQ_API_PORT] = $ENV_RABBITMQ_CONNECTION_DATA['port'] ?? 80;
+$config[RabbitMqEnv::RABBITMQ_API_USERNAME] = $ENV_RABBITMQ_CONNECTION_DATA['user'];
+$config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = $ENV_RABBITMQ_CONNECTION_DATA['pass'];
 
 // ---------- Session
 $config[SessionConstants::YVES_SESSION_COOKIE_SECURE] = false;
