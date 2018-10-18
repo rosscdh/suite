@@ -53,7 +53,7 @@ $config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = $ENV_RABBITMQ_CONNECTION_DATA['pas
 
 // ---------- RabbitMq
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
-    [
+    'DE' => [
         RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
         RabbitMqEnv::RABBITMQ_HOST => $ENV_RABBITMQ_CONNECTION_DATA['host'],
         RabbitMqEnv::RABBITMQ_PORT => $ENV_RABBITMQ_CONNECTION_DATA['port'] ?? 80,
