@@ -10,6 +10,7 @@ use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\PropelOrm\PropelOrmConstants;
+use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Setup\SetupConstants;
@@ -42,9 +43,13 @@ $config[StorageConstants::STORAGE_REDIS_HOST] = $ENV_REDIS_CONNECTION_DATA['host
 $config[StorageConstants::STORAGE_REDIS_PORT] = $ENV_REDIS_CONNECTION_DATA['port'];
 $config[StorageConstants::STORAGE_REDIS_PASSWORD] = $ENV_REDIS_CONNECTION_DATA['pass'];
 
+$ENV_RABBITMQ_CONNECTION_DATA = parse_url(getenv(getenv('AMQP_URL_NAME') ?: 'AMQP_URL_NAME'));
+
 // ---------- RabbitMQ
-$config[ApplicationConstants::ZED_RABBITMQ_HOST] = 'localhost';
-$config[ApplicationConstants::ZED_RABBITMQ_PORT] = '5672';
+$config[RabbitMqEnv::RABBITMQ_API_HOST] = $ENV_DB_CONNECTION_DATA['host'];
+$config[RabbitMqEnv::RABBITMQ_API_PORT] = $ENV_DB_CONNECTION_DATA['port'] ?? 80;
+$config[RabbitMqEnv::RABBITMQ_API_USERNAME] = $ENV_DB_CONNECTION_DATA['user'];
+$config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = $ENV_DB_CONNECTION_DATA['pass'];
 
 // ---------- Session
 $config[SessionConstants::YVES_SESSION_COOKIE_SECURE] = false;

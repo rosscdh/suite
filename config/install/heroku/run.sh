@@ -3,7 +3,7 @@
 set -xe
 
 if [ "$APPLICATION_NAME" == "Yves" ]; then
-    vendor/bin/install -r development-heroku -s clear -s generate -s yves-frontend
+    vendor/bin/install -r development-heroku -s cache -s generate -s yves-frontend
 else
     vendor/bin/install -r development-heroku -s generate -s database-migrate -s demodata -s jenkins-up -s zed-frontend
 fi

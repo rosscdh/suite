@@ -6,6 +6,7 @@ use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
+use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Setup\SetupConstants;
@@ -74,7 +75,7 @@ $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NA
 // ---------- Email
 $config[MailConstants::MAILCATCHER_GUI] = 'http://' . $config[ApplicationConstants::HOST_ZED] . ':1080';
 
+$ENV_RABBITMQ_CONNECTION_DATA = parse_url(getenv(getenv('AMQP_URL_NAME') ?: 'AMQP_URL_NAME'));
 // ---------- RabbitMQ
-$config[ApplicationConstants::ZED_RABBITMQ_USERNAME] = 'DE_development';
-$config[ApplicationConstants::ZED_RABBITMQ_PASSWORD] = 'mate20mg';
-$config[ApplicationConstants::ZED_RABBITMQ_VHOST] = '/DE_development_zed';
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = true;
+$config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = $ENV_RABBITMQ_CONNECTION_DATA['path'];
