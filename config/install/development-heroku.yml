@@ -49,10 +49,6 @@ sections:
         generate-transfers:
             command: "vendor/bin/console transfer:generate"
 
-        generate-ide-auto-completion:
-            command: "vendor/bin/console dev:ide:generate-auto-completion"
-
-
     cache:
         twig-cache-warmup:
             command: "vendor/bin/console twig:cache:warmer"
