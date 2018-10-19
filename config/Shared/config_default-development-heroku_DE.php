@@ -75,7 +75,17 @@ $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NA
 // ---------- Email
 $config[MailConstants::MAILCATCHER_GUI] = 'http://' . $config[ApplicationConstants::HOST_ZED] . ':1080';
 
-$ENV_RABBITMQ_CONNECTION_DATA = parse_url(getenv(getenv('AMQP_URL_NAME') ?: 'AMQP_URL_NAME'));
 // ---------- RabbitMQ
-$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = true;
-$config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = $ENV_RABBITMQ_CONNECTION_DATA['path'];
+$ENV_RABBITMQ_CONNECTION_DATA = parse_url(getenv(getenv('AMQP_URL_NAME') ?: 'AMQP_URL_NAME'));
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
+    'DE' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
+        RabbitMqEnv::RABBITMQ_HOST => $ENV_RABBITMQ_CONNECTION_DATA['host'],
+        RabbitMqEnv::RABBITMQ_PORT => $ENV_RABBITMQ_CONNECTION_DATA['port'] ?? 80,
+        RabbitMqEnv::RABBITMQ_PASSWORD => $ENV_RABBITMQ_CONNECTION_DATA['pass'],
+        RabbitMqEnv::RABBITMQ_USERNAME => $ENV_RABBITMQ_CONNECTION_DATA['user'],
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => $ENV_RABBITMQ_CONNECTION_DATA['path'],
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
+        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,
+    ],
+];
