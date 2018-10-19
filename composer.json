@@ -538,7 +538,7 @@
     "use-include-path": true,
     "sort-packages": true,
     "github-protocols": ["https"],
-    "process-timeout": 900
+    "process-timeout": 3600
   },
   "scripts": {
     "compile": [
