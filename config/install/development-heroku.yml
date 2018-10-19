@@ -159,7 +159,7 @@ sections:
             stores:
             - US
             - DE
-            timeout: 1200
+            timeout: 2400
 
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update"
@@ -181,40 +181,40 @@ sections:
             command: "vendor/bin/console frontend:project:install-dependencies -vvv"
             groups:
             - project
-            timeout: 1200
+            timeout: 2400
 
         yves-install-dependencies:
             command: "vendor/bin/console frontend:yves:install-dependencies -vvv"
             groups:
             - yves
-            timeout: 1200
+            timeout: 2400
 
         yves-build-frontend:
             command: "vendor/bin/console frontend:yves:build -vvv"
             groups:
             - yves
-            timeout: 1200
+            timeout: 2400
 
     zed-frontend:
         dependencies-install:
             command: "vendor/bin/console frontend:project:install-dependencies -vvv"
             groups:
             - project
-            timeout: 1200
+            timeout: 2400
 
         zed-install-dependencies:
             command: "vendor/bin/console frontend:zed:install-dependencies -vvv"
             groups:
             - zed
-            timeout: 1200
+            timeout: 2400
 
         zed-build-frontend:
             command: "vendor/bin/console frontend:zed:build"
             groups:
             - zed
-            timeout: 1200
+            timeout: 2400
 
     queue:
         run-worker:
             command: "vendor/bin/console queue:worker:start"
-            timeout: 1200
+            timeout: 2400
