@@ -75,36 +75,6 @@ sections:
             stores: true
 
 
-    database-flush:
-        delete-elastic-search-index:
-            command: "vendor/bin/console search:index:delete"
-            stores: true
-            groups:
-            - elastic
-
-        delete-storage:
-            command: "vendor/bin/console storage:delete"
-            stores: true
-            groups:
-            - redis
-
-        drop-database:
-            command: "vendor/bin/console propel:database:drop"
-            pre: "hidden/maintenance-zed-on"
-            stores:
-            - US
-            - DE
-            groups:
-            - propel
-
-        delete-migration-files:
-            command: "vendor/bin/console propel:migration:delete"
-            stores:
-            - DE
-            groups:
-            - propel
-
-
     database-migrate:
         propel-config:
             command: "vendor/bin/console propel:config:convert"
@@ -177,12 +147,6 @@ sections:
         generate-entity-transfer:
             command: "vendor/bin/console transfer:generate"
 
-        init-database:
-            command: "vendor/bin/console setup:init-db"
-            stores:
-            - US
-            - DE
-
         setup-search:
             command: "vendor/bin/console setup:search"
             stores: true
@@ -248,4 +212,9 @@ sections:
             command: "vendor/bin/console frontend:zed:build"
             groups:
             - zed
+            timeout: 1200
+
+    queue:
+        run-worker:
+            command: "vendor/bin/console queue:worker:start"
             timeout: 1200
