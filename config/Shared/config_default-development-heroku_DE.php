@@ -77,6 +77,7 @@ $config[MailConstants::MAILCATCHER_GUI] = 'http://' . $config[ApplicationConstan
 
 // ---------- RabbitMQ
 $ENV_RABBITMQ_CONNECTION_DATA = parse_url(getenv(getenv('AMQP_URL_NAME') ?: 'AMQP_URL_NAME'));
+$vhost = substr($ENV_RABBITMQ_CONNECTION_DATA['path'], 1);
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
     'DE' => [
         RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
@@ -84,7 +85,7 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
         RabbitMqEnv::RABBITMQ_PORT => $ENV_RABBITMQ_CONNECTION_DATA['port'] ?? 5672,
         RabbitMqEnv::RABBITMQ_PASSWORD => $ENV_RABBITMQ_CONNECTION_DATA['pass'],
         RabbitMqEnv::RABBITMQ_USERNAME => $ENV_RABBITMQ_CONNECTION_DATA['user'],
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => $ENV_RABBITMQ_CONNECTION_DATA['path'],
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => $vhost,
         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
         RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,
     ],
