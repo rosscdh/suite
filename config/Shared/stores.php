@@ -44,6 +44,14 @@ $stores['DE'] = [
     ],
 ];
 
+$stores['AT'] = [
+        'storesWithSharedPersistence' => ['DE'],
+    ] + $stores['DE'];
+
+$stores['US'] = [
+        'storesWithSharedPersistence' => [],
+    ] + $stores['DE'];
+
 // @hook travis-ci
 
 return $stores;
