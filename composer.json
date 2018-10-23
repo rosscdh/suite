@@ -545,7 +545,8 @@
       "mkdir -p ./data/DE/logs/ZED/",
       "mkdir -p ./src/Generated/Shared/Search/",
       "mkdir -p ./src/Generated/Shared/Transfer/",
-      "echo '<?php return \"development-heroku\";' > config/Shared/console_env_local.php"
+      "echo '<?php return \"development-heroku\";' > config/Shared/console_env_local.php",
+      "vendor/bin/install -r development-heroku-build"
     ],
     "post-install-cmd": [
       "PhantomInstaller\\Installer::installPhantomJS"

@@ -1,0 +1,20 @@
+env:
+    APPLICATION_ENV: development-heroku
+
+stores:
+- DE
+
+command-timeout: 3600
+
+sections:
+    generate:
+        generate-transfers:
+            command: "vendor/bin/console transfer:generate"
+
+    navigation-cache-warmup:
+        navigation-cache-warmup:
+            command: "vendor/bin/console navigation:build-cache"
+
+    twig-cache-warmup:
+        twig-cache-warmup:
+            command: "vendor/bin/console twig:cache:warmer"
