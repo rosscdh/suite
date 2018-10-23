@@ -49,13 +49,16 @@ sections:
         generate-transfers:
             command: "vendor/bin/console transfer:generate"
 
-    cache:
+    navigation-cache-warmup:
         twig-cache-warmup:
             command: "vendor/bin/console twig:cache:warmer"
 
         navigation-cache-warmup:
             command: "vendor/bin/console navigation:build-cache"
 
+    twig-cache-warmup:
+        twig-cache-warmup:
+            command: "vendor/bin/console twig:cache:warmer"
 
     queue-flush:
         set-permissions:
