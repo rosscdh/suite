@@ -11,14 +11,6 @@ sections:
         generate-transfers:
             command: "vendor/bin/console transfer:generate"
 
-    navigation-cache-warmup:
-        navigation-cache-warmup:
-            command: "vendor/bin/console navigation:build-cache"
-
-    twig-cache-warmup:
-        twig-cache-warmup:
-            command: "vendor/bin/console twig:cache:warmer"
-
     database-migrate:
         propel-config:
             command: "vendor/bin/console propel:config:convert"
@@ -96,3 +88,11 @@ sections:
             stores: true
             groups:
             - elastic
+
+    navigation-cache-warmup:
+        navigation-cache-warmup:
+            command: "vendor/bin/console navigation:build-cache"
+
+    twig-cache-warmup:
+        twig-cache-warmup:
+            command: "vendor/bin/console twig:cache:warmer"
