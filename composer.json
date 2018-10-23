@@ -543,6 +543,7 @@
   "scripts": {
     "compile": [
       "mkdir -p ./data/DE/logs/ZED",
+      "mkdir -p ./src/Generated",
       "echo '<?php return \"development-heroku\";' > config/Shared/console_env_local.php"
     ],
     "post-install-cmd": [
