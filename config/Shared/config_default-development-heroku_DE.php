@@ -86,7 +86,7 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
         RabbitMqEnv::RABBITMQ_PASSWORD => $ENV_RABBITMQ_CONNECTION_DATA['pass'],
         RabbitMqEnv::RABBITMQ_USERNAME => $ENV_RABBITMQ_CONNECTION_DATA['user'],
         RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => $vhost,
-        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE', 'AT', 'US'],
         RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,
     ],
 ];

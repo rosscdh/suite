@@ -3741,7 +3741,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var hasNativeCustomElements = !!window.customElements;
 if (hasNativeCustomElements) {
-    __webpack_require__.e(/*! import() */ 17).then(__webpack_require__.t.bind(null, /*! @webcomponents/webcomponentsjs/custom-elements-es5-adapter */ "./node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js", 7));
+    __webpack_require__.e(/*! import() */ 25).then(__webpack_require__.t.bind(null, /*! @webcomponents/webcomponentsjs/custom-elements-es5-adapter */ "./node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js", 7));
 }
 
 
