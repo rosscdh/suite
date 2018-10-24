@@ -77,6 +77,7 @@ $config[MailConstants::MAILCATCHER_GUI] = 'http://' . $config[ApplicationConstan
 
 // ---------- RabbitMQ
 $ENV_RABBITMQ_CONNECTION_DATA = parse_url(getenv(getenv('AMQP_URL_NAME') ?: 'AMQP_URL_NAME'));
+
 $vhost = substr($ENV_RABBITMQ_CONNECTION_DATA['path'], 1);
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
     'DE' => [
